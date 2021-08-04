@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+dependencies:
+  - perl=5.26.2=h470a237_0
+  - perl-app-cpanminus
+  - bcftools
+  - bedtools

@@ -1,0 +1,11 @@
+channels:
+  - bioconda
+  - conda-forge
+  - hcc
+dependencies:
+  - samtools =1.9
+  - retroseq
+  - python=3.7
+  - biopython
+  - perl-text-soundex
+  - h5py
