@@ -7,7 +7,7 @@ Snakemake pipelines are ideal for this scenario, as any result file can be creat
 
 For example, if BAM file is paready present in the specified directory, the first step, CramtoBam conversion is skipped, and the BAM file goes directly to the retroseqDiscover and retroseqCall steps. 
 
-# hello
+
 
 
 As the snakemake pipeline is modular and providing different outputs, one way to call it is to specify the output file.  
@@ -38,3 +38,8 @@ To call in on the cluster
 nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /mnt/lustre/groups/herv_project/snakemake/retroseq/results/{LP6008463-DNA_G04.annotatedFiltered.tsv,LP6008463-DNA_G04.annotatedFiltered.html,LP6008463-DNA_G04.annotatedVerified.tsv,LP6008463-DNA_G04.annotatedVerified.html,LP6008463-DNA_G04.novelHitsF.bed,LP6008463-DNA_G04.novelHitsFV.bed,LP6008463-DNA_G04.knownHitsF.bed,LP6008463-DNA_G04.knownHitsFV.bed}
 
 
+##Installing Dependencies
+
+#RepeatMasker
+
+#AnnotSV 
