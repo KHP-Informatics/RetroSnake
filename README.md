@@ -41,5 +41,7 @@ nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --c
 # Installing Dependencies
 
 ## RepeatMasker
+https://github.com/rmhubley/RepeatMasker
+
 
 ## AnnotSV 
