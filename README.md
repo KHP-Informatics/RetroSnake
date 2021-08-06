@@ -45,3 +45,7 @@ https://github.com/rmhubley/RepeatMasker
 
 
 ## AnnotSV 
+https://lbgi.fr/AnnotSV/
+https://github.com/mobidic/knotAnnotSV
+
+
