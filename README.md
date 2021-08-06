@@ -51,4 +51,5 @@ https://lbgi.fr/AnnotSV/
 
 https://github.com/mobidic/knotAnnotSV
 
-
+Important:
+After the installation, update the path of the two install directories (to AnnotSV and knotAnnotSV) in the config.yaml file.
