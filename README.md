@@ -37,3 +37,4 @@ To call in on the cluster
 
 nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /mnt/lustre/groups/herv_project/snakemake/retroseq/results/{LP6008463-DNA_G04.annotatedFiltered.tsv,LP6008463-DNA_G04.annotatedFiltered.html,LP6008463-DNA_G04.annotatedVerified.tsv,LP6008463-DNA_G04.annotatedVerified.html,LP6008463-DNA_G04.novelHitsF.bed,LP6008463-DNA_G04.novelHitsFV.bed,LP6008463-DNA_G04.knownHitsF.bed,LP6008463-DNA_G04.knownHitsFV.bed}
 
+
