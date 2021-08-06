@@ -45,7 +45,10 @@ https://github.com/rmhubley/RepeatMasker
 
 
 ## AnnotSV 
+Follow the instructions to download and install AnnotSV and knotAnnotSV.  This is only needed if you are going to run the annotation step of RetroPlus pipeline.  
+
 https://lbgi.fr/AnnotSV/
+
 https://github.com/mobidic/knotAnnotSV
 
 
