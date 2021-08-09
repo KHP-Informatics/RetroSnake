@@ -1,6 +1,6 @@
 # retroPlus
 
-This is a SnakeMake pipeline based on RetroSeq https://github.com/tk2/RetroSeq,  a tool for discovery and genotyping of transposable element variants.
+This is a SnakeMake pipeline based on RetroSeq https://github.com/tk2/RetroSeq,  a tool for discovery of transposable element variants.
 The pipeline runs RetroSeq configured to seach for HERV-K insertions (can look for any other mobile elements, see below how to change that), filters RetroSeq predictions, verifies the insertions by assembling the regions around each insertion and running the assembled contigs through RepeatMasker, and finally annotates insertions.
 
 <img width="794" alt="image" src="https://user-images.githubusercontent.com/51742526/128677961-017e99c9-bdd0-4951-bbc3-e0057a3e1fe1.png">
