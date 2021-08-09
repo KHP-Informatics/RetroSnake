@@ -1,5 +1,9 @@
 # retroPlus
 
+This is a SnakeMake pipeline based on RetroSeq https://github.com/tk2/RetroSeq,  a tool for discovery and genotyping of transposable element variants.
+The pipeline runs RetroSeq, filters RetroSeq predictions, verifies the insertions by assembling the regions around each insertion and running the assembled contigs through RepeatMasker, and finally annotated the remaining high confidence insertions.
+
+
 In this modular Snakemake pipeline, users can choose the level of filtering and verification of predicted insertions, as well as a few steps of downstream analysis: comparing the predictions with the known insertions to separate them into previously reported and novel insertions, as well as using AnnotSV to further annotate the insertions with genes and regulatory elements, and their potential clinical significance.
 
 
