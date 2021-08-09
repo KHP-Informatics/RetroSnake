@@ -27,6 +27,20 @@ To produce a file with retroseq prediction which have been filtered and verified
 snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedVerified.tsv
 
 
+# Change the transposable element to look for - the default is HERV-K
+
+In config.yalm
+
+HERVK_eref: /mnt/lustre/groups/herv_project/herv_pipeline_startfiles/hervk_eref.tab
+
+hervk_eref.tab has the following contents:
+HERVK	/mnt/lustre/groups/herv_project/herv_pipeline_startfiles/HERVK_ref.fasta
+
+The first column is the name of transposable elementm the second its sequence in fasta file.
+
+Replace the content of
+
+
 # Example 3
 
 To take filtered and verified predictions and to mark known and novel HERV-K insertions, you would call:
