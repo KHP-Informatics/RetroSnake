@@ -27,19 +27,6 @@ To produce a file with retroseq prediction which have been filtered and verified
 snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedVerified.tsv
 
 
-# Change the transposable element to look for - the default is HERV-K
-
-In config.yalm
-
-HERVK_eref: /mnt/lustre/groups/herv_project/herv_pipeline_startfiles/hervk_eref.tab
-
-hervk_eref.tab has the following contents:
-HERVK	/mnt/lustre/groups/herv_project/herv_pipeline_startfiles/HERVK_ref.fasta
-
-The first column is the name of transposable elementm the second its sequence in fasta file.
-
-Replace the content of
-
 
 # Example 3
 
@@ -81,3 +68,18 @@ https://github.com/mobidic/knotAnnotSV
 
 Important:
 After the installation, update the path of the two install directories (to AnnotSV and knotAnnotSV) in the config.yaml file.
+
+# Change the transposable element to look for - the default is HERV-K
+
+1.In config.yalm
+
+HERVK_eref: /mnt/lustre/groups/herv_project/herv_pipeline_startfiles/hervk_eref.tab
+
+hervk_eref.tab has the following contents:
+HERVK	/mnt/lustre/groups/herv_project/herv_pipeline_startfiles/HERVK_ref.fasta
+
+The first column is the name of transposable elementm the second its sequence in fasta file.
+
+Replace the content of hervk_eref.tab file to point to FASTA of another transposable element. The name 'HERVK_eref' and 'hervk_eref.tab' can stay the same.
+
+
