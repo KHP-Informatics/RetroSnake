@@ -82,4 +82,21 @@ The first column is the name of transposable elementm the second its sequence in
 
 Replace the content of hervk_eref.tab file to point to FASTA of another transposable element. The name 'HERVK_eref' and 'hervk_eref.tab' can stay the same.
 
+2.In config yaml
+knownNR: /mnt/lustre/groups/herv_project/herv_pipeline_startfiles/list_of_known_integration_sitesNR.bed
 
+Replace the file list_of_known_integration_sitesNR.bed with the list of known integration sites for your own transposable element. Thus is only needed for stepos X and Y.
+
+
+
+Parameters that might need adjustment according to your needs:
+
+Filtering step
+
+-in file filterHighQualRetroseqForDownstream.py
+the actual filtering line is   
+      if ((fl == 6 and gq > 28) or (fl == 7 and gq > 20) or (fl == 8 and gq > 10)):
+ that would be the place to adjust the combination of flags to qualify an insertion   
+ 
+ 
+ 
