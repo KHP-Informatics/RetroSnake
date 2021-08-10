@@ -96,7 +96,20 @@ Filtering step
 -in file filterHighQualRetroseqForDownstream.py
 the actual filtering line is   
       if ((fl == 6 and gq > 28) or (fl == 7 and gq > 20) or (fl == 8 and gq > 10)):
- that would be the place to adjust the combination of flags to qualify an insertion   
+ that would be the place to adjust the combination of flags to qualify an insertion 
+ 
+ 
+ # RepeatMasker output filtering
+ 
+ The first line of filtering - is a repetitive element found in a particular contig.
+ #Filtering criteria: 
+% substitutions in matching region compared to the consensus < 10
+% of bases opposite a gap in the query sequence (deleted bp) < 3
+% of bases opposite a gap in the repeat consensus (inserted bp) < 3
+
+The second is - looking at the contigs that pass these filters - is our TE of interest found, or another similar repetitive element is found with a better score?
+The rule:
+If a TE (by default LTR5_Hs) is found either in more than one contig, OR if it is found only in one contig, that one would have to be in the top half of contigs as ranked by cap3;
  
  
  
