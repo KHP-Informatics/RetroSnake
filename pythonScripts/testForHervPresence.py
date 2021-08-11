@@ -4,6 +4,7 @@ allContigs=[]
 contigs=[]
 
 inFile = open(sys.argv[1],'r')
+element = open(sys.argv[2],'r')
 #print ("Checking the file " + sys.argv[1])
 #inFile=open("chr4_9602976-9603226.fa.cap.contigs.out",'r')
 #inFile=open("chr2_65138685-65138935.fa.cap.contigs.out",'r')
@@ -13,7 +14,7 @@ for line in inFile:
     if len(bits)>0:
         if not (bits[4] in allContigs) and not (bits[4]=="query") and not (bits[4]=="sequence"):
             allContigs.append(bits[4])
-        if line.find ("LTR5_Hs")>0:
+        if line.find (element)>0:
              #32    6.1  0.0  0.0  Contig1       1    49  (491) C SVA_E     Retroposon/SVA  (1263)    119     71   1
             if float(bits[1])<10 and float(bits[2])<3 and float(bits[3])<3:
                 contigs.append(bits[4])
@@ -21,10 +22,7 @@ for line in inFile:
 inFile.close()
 contigs.sort()
 allContigs.sort()
-##print ("contigs")
-##print (contigs)
-##print ("all contigs")
-##print (allContigs)
+
 
 #rules: either more than one contig, or if it is on, towards the top of the list
 #/mnt/lustre/groups/herv_project/herv_pipeline_out/sampletemp2/LP6008118-DNA_D05/repeatmasker/chr9:132205151-132206151.fasta.cap.contigs.out
