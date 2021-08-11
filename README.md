@@ -102,10 +102,16 @@ the actual filtering line is
  # RepeatMasker output filtering
  
  The first line of filtering - is a repetitive element found in a particular contig.
- #Filtering criteria: 
+ 
+ 
+ Filtering criteria: 
+
 % substitutions in matching region compared to the consensus < 10
+
 % of bases opposite a gap in the query sequence (deleted bp) < 3
+
 % of bases opposite a gap in the repeat consensus (inserted bp) < 3
+
 
 The second is - looking at the contigs that pass these filters - is our TE of interest found, or another similar repetitive element is found with a better score?
 The rule:
