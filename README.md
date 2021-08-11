@@ -129,6 +129,8 @@ The second is - looking at the contigs that pass these filters - is our TE of in
 The rule:
 If a TE (by default LTR5_Hs) is found either in more than one contig, OR if it is found only in one contig, that one would have to be in the top half of contigs as ranked by cap3;
 For example, if you would want only to verify that there was a HERVK anywhere in any contig, you would need to replace this block of code:
+
+```python
 if len (contigs)>1:
     print (chro + "\t" + start + "\t" + stop) 
     exit()
@@ -140,7 +142,7 @@ if len(contigs)==1:
     if position/len(contigs) < 0.51:
         print (chro + "\t" + start + "\t" + stop) 
         exit() 
-
+```
 with this one:
 
 if len (contigs)>1:
