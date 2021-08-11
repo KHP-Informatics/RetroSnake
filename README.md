@@ -145,10 +145,11 @@ if len(contigs)==1:
 ```
 with this one:
 
+```python
 if len (contigs)>1:
     print (chro + "\t" + start + "\t" + stop) 
     exit()
-
+```
  
  
  
