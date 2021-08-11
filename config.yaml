@@ -1,17 +1,17 @@
 #config.yaml
 
 #absolute or relative
-bamPath: /mnt/lustre/groups/herv_project/BAMs/
-outPath: /mnt/lustre/groups/herv_project/snakemake/retroseq/
-#outPath: /mnt/lustre/users/k1929424/snkmk/retroseq/temp/
-HERVK_eref: /mnt/lustre/groups/herv_project/herv_pipeline_startfiles/hervk_eref.tab
-refHg19: /mnt/lustre/groups/herv_project/UCSC_hg19/hg19.fa
-knownNR: /mnt/lustre/groups/herv_project/herv_pipeline_startfiles/list_of_known_integration_sitesNR.bed
-pythonScripts: /scratch/users/k1929424/snkmk/retroseq/pythonScripts
-#retroPath: /scratch/users/k1929424/Retroseq/RetroSeq/bin
-retroPath: /scratch/users/k1929424/Miniconda3/envs/snakemake/bin
-RepeatMaskerPath: /scratch/users/k1929424/Retroseq/RepeatMasker/
-AnnotSVDir: /users/k1929424/AnnotSV/
-knotAnnotSV: /users/k1929424/AnnotSV/share/AnnotSV/Annotations_Human/Genes/GRCh37/knotAnnotSV/
+bamPath: /PATH_TO_YOUR_OWN_BAM_REPOSITORY/
+cramPath: /PATH_TO_YOUR_OWN_CRAM_REPOSITORY/
+outPath: /DIRECTORY_FOR_REULTS/
+HERVK_eref: resources/hervk_eref.tab
+refHg19: /PATH_TO_WHERE_YOU_DOWNLOADED_REFERENCE_GENOME/hg19.fa
+knownNR: resources/list_of_known_integration_sitesNR.bed
+pythonScripts: pythonScripts
+retroPath: /PATH_OF_RETROSEQ_INSTALLATION/bin
+RepeatMaskerPath: /PATH_OF_REPEATMASKER_INSTALLATION/RepeatMasker/
+AnnotSVDir: /PATH_OF_ANNOTSV/AnnotSV/
+knotAnnotSV: /PATH_OF_KNOT_ANNOT_SV/knotAnnotSV/
 genomeBuildGR: GRCh37
 genomeBuildHg: hg19
+element: LTR5_Hs
