@@ -1,7 +1,6 @@
 configfile: "config.yaml"
 
-SAMPLES = ["LP6008463-DNA_E02","LP6008462-DNA_G02","LP6008462-DNA_G04","LP6008462-DNA_H12","LP6008462-DNA_H01","LP6008462-DNA_H05","LP6008462-DNA_F10","LP6008462-DNA_E09","LP6008462-DNA_F02","LP6008462-DNA_F07"]
-
+SAMPLES = ["BAM1_Prefix","BAM2_Prefix","BAM3_Prefix"]
 outPath = config["outPath"]
 bamPath = config["bamPath"]
 cramPath = config["cramPath"]
@@ -9,8 +8,10 @@ cramPath = config["cramPath"]
 
 rule all:
    input:
-        expand(outPath + "filter/{sample}.bed", sample=SAMPLES)
-        expand(outPath + "confirmed/{sample}.retroseqHitsConfirmed.bed, sample=SAMPLES)
+        expand(outPath + "results/{sample}.knownHitsF.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.knownHitsFV.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.novelHitsF.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.novelHitsFV.bed", sample=SAMPLES)
 
 
 
@@ -18,8 +19,8 @@ rule CramToBam:
     input:
         cram_file=cramPath + "{sample}.cram"
     output:
-        temp(bam_file=bamPath + "{sample}.bam"),
-        temp(bam_index=bamPath + "{sample}.bam.bai")
+        temp(bamPath + "{sample}.bam"),
+        temp(bamPath + "{sample}.bam.bai")
     benchmark:
         "benchmarks/{sample}.CramToBam.benchmark.tsv"
     conda:
@@ -29,13 +30,14 @@ rule CramToBam:
         mem_mb=16000,
     shell:
         """
-        samtools view -b -h -@ {threads} -T {config[refHg19]} -o {output.bam_file} {input.cram_file}
-        samtools index -@ {threads} {output.bam_file}
+        samtools view -b -h -@ {threads} -T {config[refHg19]} -o {output[0]} {input.cram_file}
+        samtools index -@ {threads} {output[0]}
         """
 
 rule retroseqDiscover:
     input:
-        bamPath + "{sample}.bam"
+        bamPath + "{sample}.bam",
+        bamPath + "{sample}.bam.bai"
     output:
         outPath + "discover/{sample}.bed"
     threads: 8
@@ -50,11 +52,12 @@ rule retroseqDiscover:
     conda:
        "envs/retroseq.yaml"
     shell:
-        "perl {config[retroPath]}/retroseq.pl -discover -bam {input} -output {output} -eref {config[HERVK_eref]} -id {params.identity}"
+        "perl {config[retroPath]}/retroseq.pl -discover -bam {input[0]} -output {output} -eref {config[HERVK_eref]} -id {params.identity}"
  
 rule retroseqCall:
     input:
         bam=bamPath + "{sample}.bam",
+        bai=bamPath + "{sample}.bam.bai",
         discover=outPath + "discover/{sample}.bed"
     output:
         outPath + "call/{sample}.vcf"
@@ -85,7 +88,8 @@ rule filterCalls:
 rule verify:
     input:
       outPath + "filter/{sample}.pos",
-      bamPath + "{sample}.bam"
+      bamPath + "{sample}.bam",
+      bamPath + "{sample}.bam.bai"
     output:
       outPath + "confirmed/{sample}.retroseqHitsConfirmed.bed"
     benchmark:
@@ -96,7 +100,7 @@ rule verify:
         "logs/call/{sample}.log"
     shell:
       """
-      python {config[pythonScripts]}/assembleAndRepeatMasker.py {config[outPath]}filter/{wildcards.sample}.pos {output} {config[bamPath]}{wildcards.sample}.bam {config[outPath]} {config[RepeatMaskerPath]} {config[pythonScripts]} 
+      python {config[pythonScripts]}/assembleAndRepeatMasker.py {input[0]} {output} {config[bamPath]}{wildcards.sample}.bam {config[outPath]} {config[RepeatMaskerPath]} {config[pythonScripts]} {config[element]} 
       """ 
 
 rule markKnownFiltered:
