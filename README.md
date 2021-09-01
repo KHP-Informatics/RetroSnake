@@ -54,7 +54,7 @@ nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --c
 
 # Installing Dependencies
 
-##Reference genome
+## Reference genome
 If you already have a reference genome (and it is indexed), update the path to it in config.yaml
 If you do not, run the script downloadHG19.sh in order to install it and index it.
 ```
