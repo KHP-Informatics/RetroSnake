@@ -15,42 +15,43 @@ As the snakemake pipeline is modular and providing different outputs, one way to
 
 To produce a file with retroseq prediction which have been filtered and annotated, you would call it:
 
+```
 snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedFiltered.tsv
-
+```
 This would run retroseq, filter the results, and run AnnotSV to annotate them. The prerequisites are that either a <YOUR_SAMPLE_PREFIX>.bam or <YOUR_SAMPLE_PREFIX>.cram exist in the respective bam or cram directories specified in file config.yaml.
 
 
 ## Example 2
 
 To produce a file with retroseq prediction which have been filtered and verified with the extra verification step (assembling the region and running throught RepeatMasker) and then annotated, you would call it:
-
+```
 snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedVerified.tsv
-
-
+```
 
 ## Example 3
 
 To take filtered and verified predictions and to mark known and novel HERV-K insertions, you would call:
+```
 snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/ {<YOUR_SAMPLE_PREFIX>.novelHitsFV.bed,<YOUR_SAMPLE_PREFIX>.knownHitsFV.bed}
-
+```
 
 ## Example 4
 To run it on the cluster, you add to the command line:
- 
+``` 
 --cluster "sbatch -p YOUR_PARTITION --mem-per-cpu=7G"
-
+```
 ## Example 5
 
 It can be run with multiple files simultaneously, snakemake will split it in different cores. For example, to get annotated and verified predictions for several files (BAM or CRAM), you would call it:
-
+```
 snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/{BAM1_prefix,BAM2_prefix, BAM3_prefix}.annotatedVerified.tsv
-
+```
 ## Example 6
 
 To call in on the cluster
-
+```
 nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
-
+```
 ## Example 7
 
 Alternatively, you can specify in the furst rule, all, the requested target files, and define the samples to run it on:
