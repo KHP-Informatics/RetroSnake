@@ -57,9 +57,9 @@ nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --c
 ##Reference genome
 If you already have a reference genome (and it is indexed), update the path to it in config.yaml
 If you do not, run the script downloadHG19.sh in order to install it and index it.
-'''
+```
 bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
-'''
+```
 
 ## RepeatMasker
 https://github.com/rmhubley/RepeatMasker
