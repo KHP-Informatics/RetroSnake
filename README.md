@@ -54,6 +54,13 @@ nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --c
 
 # Installing Dependencies
 
+##Reference genome
+If you already have a reference genome (and it is indexed), update the path to it in config.yaml
+If you do not, run the script downloadHG19.sh in order to install it and index it.
+'''
+bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
+'''
+
 ## RepeatMasker
 https://github.com/rmhubley/RepeatMasker
 RepeatMasker is only needed for the verification step.  Without it you can still run RetroSeq, Filter insertions, mark known and novel insertions and run functional annotation. If you do not want the extra verification step, you do not need to install RepeatMasker.
