@@ -57,7 +57,7 @@ nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --c
 Alternatively, you can specify in the furst rule, all, the requested target files, and define the samples to run it on:
 
 ```
-SAMPLES=["LP6008462-DNA_H01"]
+SAMPLES=["<YOUR_PREFIX_FOR_BAM_FILE>"]
 
 rule all:
    input:
