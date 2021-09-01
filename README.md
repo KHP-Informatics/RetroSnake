@@ -125,31 +125,10 @@ These can be adjusted in line:
             
 
 
-The second is - looking at the contigs that pass these filters - is our TE of interest found, or another similar repetitive element is found with a better score?
-The rule:
+The second is the verification level.  This can be changed by changing the parameter verificationLevel in rule verify.
+
+If the verification level is "High" the rule is as follows:
 If a TE (by default LTR5_Hs) is found either in more than one contig, OR if it is found only in one contig, that one would have to be in the top half of contigs as ranked by cap3;
-For example, if you would want only to verify that there was a HERVK anywhere in any contig, you would need to replace this block of code:
 
-```python
-if len (contigs)>1:
-    print (chro + "\t" + start + "\t" + stop) 
-    exit()
-if len(contigs)==1:
-    position=allContigs.index(contigs[0])+1
-    if position==1:
-      print (chro + "\t" + start + "\t" + stop) 
-      exit()       
-    if position/len(contigs) < 0.51:
-        print (chro + "\t" + start + "\t" + stop) 
-        exit() 
-```
-with this one:
-
-```python
-if len (contigs)>1:
-    print (chro + "\t" + start + "\t" + stop) 
-    exit()
-```
- 
- 
+If the verification level is "Low" (default), if there is a LTR5_Hs anywhere in any contig, it will pass the filter.
  
