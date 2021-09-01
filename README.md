@@ -134,9 +134,10 @@ element - replace with the name of TE, as defined in RepeatMasker libraries
 
 The filtering is done in script filterHighQualRetroseqForDownstream.py, found in folder pythonScripts.  It takes into account flags fl and gq. 
 
-The actual filtering line is   
-      if ((fl == 6 and gq > 28) or (fl == 7 and gq > 20) or (fl == 8 and gq > 10)):
- 
+The actual filtering line is 
+```
+if ((fl == 6 and gq > 28) or (fl == 7 and gq > 20) or (fl == 8 and gq > 10)):
+``` 
  To change the criteria, adjust the combination of flags to qualify an insertion in that line 
  
  
@@ -156,8 +157,9 @@ The actual filtering line is
 % of bases opposite a gap in the repeat consensus (inserted bp) < 3
 
 These can be adjusted in line:
-            if float(bits[1])<10 and float(bits[2])<3 and float(bits[3])<3:
-            
+```
+if float(bits[1])<10 and float(bits[2])<3 and float(bits[3])<3:
+ ```           
 
 
 The second is the verification level.  This can be changed by changing the parameter verificationLevel in rule verify.
