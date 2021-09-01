@@ -51,7 +51,34 @@ To call in on the cluster
 
 nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
 
+## Example 7
 
+Alternatively, you can specify in the furst rule, all, the requested target files, and define the samples to run it on:
+
+```
+SAMPLES=["LP6008462-DNA_H01"]
+
+rule all:
+   input:
+        expand(outPath + "filter/{sample}.bed", sample=SAMPLES),
+        expand(outPath + "confirmed/{sample}.retroseqHitsConfirmed.bed",sample=SAMPLES),
+        expand(outPath + "results/{sample}.knownHitsF.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.knownHitsFV.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.novelHitsF.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.novelHitsFV.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.annotatedFiltered.tsv", sample=SAMPLES),
+        expand(outPath + "results/{sample}.annotatedFiltered.html", sample=SAMPLES),  
+        expand(outPath + "results/{sample}.annotatedVerified.tsv", sample=SAMPLES),
+        expand(outPath + "results/{sample}.annotatedVerified.html", sample=SAMPLES)
+```
+The snakemake can then be invoked without specifying the target files, for example:
+```
+nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 
+```
+or on the cluster:
+```
+nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p MY_PARTITION --mem-per-cpu=7G" 
+```
 # Installing Dependencies
 
 ## Reference genome
