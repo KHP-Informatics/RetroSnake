@@ -8,20 +8,23 @@ cramPath = config["cramPath"]
 
 rule all:
    input:
+        expand(outPath + "filter/{sample}.bed", sample=SAMPLES),
+        expand(outPath + "confirmed/{sample}.retroseqHitsConfirmed.bed",sample=SAMPLES),
         expand(outPath + "results/{sample}.knownHitsF.bed", sample=SAMPLES),
         expand(outPath + "results/{sample}.knownHitsFV.bed", sample=SAMPLES),
         expand(outPath + "results/{sample}.novelHitsF.bed", sample=SAMPLES),
-        expand(outPath + "results/{sample}.novelHitsFV.bed", sample=SAMPLES)
-
-
-
+        expand(outPath + "results/{sample}.novelHitsFV.bed", sample=SAMPLES),
+        expand(outPath + "results/{sample}.annotatedFiltered.tsv", sample=SAMPLES),
+        expand(outPath + "results/{sample}.annotatedFiltered.html", sample=SAMPLES),  
+        expand(outPath + "results/{sample}.annotatedVerified.tsv", sample=SAMPLES),
+        expand(outPath + "results/{sample}.annotatedVerified.html", sample=SAMPLES)
 
 rule CramToBam:
     input:
         cram_file=cramPath + "{sample}.cram"
     output:
-        temp(bamPath + "{sample}.bam"),
-        temp(bamPath + "{sample}.bam.bai")
+        bamPath + "{sample}.bam",
+        bamPath + "{sample}.bam.bai"
     benchmark:
         "benchmarks/{sample}.CramToBam.benchmark.tsv"
     conda:
@@ -92,18 +95,18 @@ rule verify:
       bamPath + "{sample}.bam",
       bamPath + "{sample}.bam.bai"
     output:
-      outPath + "confirmed/{sample}.retroseqHitsConfirmedLow.bed"
+      outPath + "confirmed/{sample}.retroseqHitsConfirmed.bed"
     benchmark:
       "benchmarks/{sample}.verify.tsv"
+    params:
+        verificationLevel="low"
     conda:
        "envs/samtools.yaml"
     log:
         "logs/call/{sample}.log"
-    params:
-        verificationLevel="low"
     shell:
       """
-      python {config[pythonScripts]}/assembleAndRepeatMasker.py {input[0]} {output} {config[bamPath]}{wildcards.sample}.bam {config[outPath]} {config[RepeatMaskerPath]} {config[pythonScripts]} {config[element]} {params.verificationLevel} 
+      python {config[pythonScripts]}/assembleAndRepeatMasker.py {input[0]} {config[bamPath]}{wildcards.sample}.bam {config[outPath]} {config[RepeatMaskerPath]} {config[pythonScripts]} {config[element]} {params.verificationLevel} {output}
       """ 
 
 rule markKnownFiltered:
@@ -144,8 +147,9 @@ rule markKnownVerified:
     benchmark:
        "benchmarks/{sample}.markKnownVerified.benchmark.txt"
     shell:
-       "bedtools window -w 100 -c -a {config[knownNR]} -b  {input}  > {output}"
-
+       """ 
+       bedtools window -w 100 -c -a {config[knownNR]} -b  {input}  > {output}
+       """
 rule markNovelVerified:
     input:
        outPath + "confirmed/{sample}.retroseqHitsConfirmed.bed"
@@ -199,3 +203,4 @@ rule annotateVerified:
         {config[AnnotSVDir]}bin/AnnotSV -annotationsDir {config[AnnotSVDir]}share/AnnotSV/  -SvinputFile {input} -genomeBuild {config[genomeBuildGR]} outputDir {config[outPath]}results/ -outputFile {wildcards.sample}.annotatedVerified 
         perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile {config[knotAnnotSV]}config_insertions.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
         """
+
