@@ -3,7 +3,7 @@
 #absolute or relative
 bamPath: /PATH_TO_YOUR_OWN_BAM_REPOSITORY/
 cramPath: /PATH_TO_YOUR_OWN_CRAM_REPOSITORY/
-outPath: /DIRECTORY_FOR_REULTS/
+outPath: /DIRECTORY_FOR_RESULTS/
 HERVK_eref: resources/hervk_eref.tab
 refHg19: /PATH_TO_WHERE_YOU_DOWNLOADED_REFERENCE_GENOME/hg19.fa
 knownNR: resources/list_of_known_integration_sitesNR.bed
