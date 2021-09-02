@@ -1,4 +1,4 @@
-# retroPlus
+# RetroSnake
 
 This is a SnakeMake pipeline based on RetroSeq https://github.com/tk2/RetroSeq,  a tool for discovery of transposable element variants.
 The pipeline runs RetroSeq configured to seach for HERV-K insertions (can look for any other mobile elements, see below how to change that), filters RetroSeq predictions, verifies the insertions by assembling the regions around each insertion and running the assembled contigs through RepeatMasker, and finally annotates insertions.
@@ -50,7 +50,7 @@ snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/{BAM1_prefi
 
 To call in on the cluster
 ```
-nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
+nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
 ```
 ## Example 7
 
