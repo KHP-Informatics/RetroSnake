@@ -2,5 +2,5 @@ channels:
   - bioconda
   - conda-forge
 dependencies:
-  - novoalign =3
-  - samtools =1.9
+  - novoalign=3
+  - samtools=1.9
