@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - hcc
 dependencies:
-  - samtools =0.1.19
+  - samtools=0.1.19
   - retroseq
   - python=3.7
   - biopython
