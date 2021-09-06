@@ -132,6 +132,7 @@ rule markNovelFiltered:
        "benchmarks/{sample}.markNovelFiltered.benchmark.txt"
     shell:
         """
+	mkdir {config[outPath]}novel 
         bedtools sort -i  {input} >  {config[outPath]}novel/{wildcards.sample}.sorted.bed 
         bedtools window -w 2000 -v -a {config[outPath]}novel/{wildcards.sample}.sorted.bed -b {config[knownNR]} > {output}  
         rm {config[outPath]}novel/{wildcards.sample}.sorted.bed 
@@ -161,6 +162,7 @@ rule markNovelVerified:
        "benchmarks/{sample}.markNovelVerified.benchmark.txt"
     shell:
         """
+	mkdir {config[outPath]}novel 
         bedtools sort -i  {input} >  {config[outPath]}novel/{wildcards.sample}.sorted.bed 
         bedtools window -w 2000 -v -a {config[outPath]}novel/{wildcards.sample}.sorted.bed -b {config[knownNR]} > {output}  
         rm {config[outPath]}novel/{wildcards.sample}.sorted.bed 
