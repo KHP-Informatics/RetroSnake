@@ -182,7 +182,7 @@ rule annotateFiltered:
         cpan YAML::XS
         cpan Sort::Key::Natural  
         {config[AnnotSVDir]}bin/AnnotSV -annotationsDir {config[AnnotSVDir]}share/AnnotSV/  -SvinputFile {input} -genomeBuild {config[genomeBuildGR]} outputDir {config[outPath]}results/ -outputFile {wildcards.sample}.annotatedFiltered 
-        perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile {config[knotAnnotSV]}config_insertions.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
+        perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile  envs/config_AnnotSV.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
         """
 
 rule annotateVerified:
@@ -201,6 +201,6 @@ rule annotateVerified:
         cpan YAML::XS
         cpan Sort::Key::Natural
         {config[AnnotSVDir]}bin/AnnotSV -annotationsDir {config[AnnotSVDir]}share/AnnotSV/  -SvinputFile {input} -genomeBuild {config[genomeBuildGR]} outputDir {config[outPath]}results/ -outputFile {wildcards.sample}.annotatedVerified 
-        perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile {config[knotAnnotSV]}config_insertions.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
+        perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile  envs/config_AnnotSV.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
         """
 
