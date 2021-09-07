@@ -107,6 +107,7 @@ rule verify:
     shell:
       """
       python {config[pythonScripts]}/assembleAndRepeatMasker.py {input[0]} {config[bamPath]}{wildcards.sample}.bam {config[outPath]} {config[RepeatMaskerPath]} {config[pythonScripts]} {config[element]} {params.verificationLevel} {output}
+      touch {output}
       """ 
 
 rule markKnownFiltered:
