@@ -101,7 +101,7 @@ rule verify:
     params:
         verificationLevel="low"
     conda:
-       "envs/samtools.yaml"
+       "envs/verification.yaml"
     log:
         "logs/call/{sample}.log"
     shell:
