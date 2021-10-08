@@ -74,11 +74,11 @@ rule all:
 ```
 The snakemake can then be invoked without specifying the target files, for example:
 ```
-nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 
+nohup snakemake --use-conda --use-envmodules --cores 5 
 ```
 or on the cluster:
 ```
-nohup snakemake -s SnakefileRetroPlus --use-conda --use-envmodules --cores 5 --cluster "sbatch -p MY_PARTITION --mem-per-cpu=7G" 
+nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p MY_PARTITION --mem-per-cpu=7G" 
 ```
 # Installing Dependencies
 
