@@ -38,7 +38,7 @@ snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/ {<YOUR_SAM
 ## Example 4
 To run it on the cluster, you add to the command line:
 ``` 
---cluster "sbatch -p YOUR_PARTITION --mem-per-cpu=7G"
+--cluster "sbatch -p YOUR_PARTITION --mem-per-cpu=3G"
 ```
 ## Example 5
 
@@ -50,7 +50,7 @@ snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/{BAM1_prefi
 
 To call in on the cluster
 ```
-nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=7G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
+nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=3G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
 ```
 ## Example 7
 
@@ -78,7 +78,7 @@ nohup snakemake --use-conda --use-envmodules --cores 5
 ```
 or on the cluster:
 ```
-nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p MY_PARTITION --mem-per-cpu=7G" 
+nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p MY_PARTITION --mem-per-cpu=3G" 
 ```
 # Installing Dependencies
 
