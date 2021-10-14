@@ -101,12 +101,13 @@ OMIM_ID:
         - OMIM_inheritance
         - OMIM_morbid
         - OMIM_morbid_candidate
-Exomiser_gene_pheno_score:
+ALT:
     POSITION: 8
-    RENAME: "Exomiser score"
-    HEADERTIPS: "Show how close each overlapped gene is to the patient phenotype<br>
-    Highly specific and consistent phenotype: score > 0.7<br>
-    Consistent phenotype: score > 0.5"
+    RENAME: "InsertionType"
+    HEADERTIPS: "Type of insertion, from dbVar"
+    COMMENTLIST:
+        - ID
+        - AF
 
 ### Annotations done with regulatory elements
 #############################################
