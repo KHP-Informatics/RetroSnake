@@ -106,6 +106,9 @@ https://github.com/mobidic/knotAnnotSV
 Important:
 After the installation, update the path of the two install directories (to AnnotSV and knotAnnotSV) in the config.yaml file.
 
+Unzip the file resources/insME_WithAF.bed.zip and place it in directory:
+<ANNOT_SV>/share/AnnotSV/Annotations_Human/Users/GRCh37/SVincludedInFt
+
 # Modifying the pipeline
 ## Change the transposable element to look for - the default is HERV-K
 
