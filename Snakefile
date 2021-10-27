@@ -191,7 +191,8 @@ rule annotateFiltered:
         sed "s/\\s*$/\\tMEI/" {input} > {input}.temp1.bed
         {config[AnnotSVDir]}bin/AnnotSV -annotationsDir {config[AnnotSVDir]}share/AnnotSV/  -SvinputFile {input}.temp1.bed -genomeBuild {config[genomeBuildGR]} -svtBEDcol 4 -outputDir {config[outPath]}results/ -outputFile {wildcards.sample}.annotatedFiltered 
         perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile  envs/config_AnnotSV.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
-        """
+        rm {input}.temp1.bed
+	"""
 
 rule annotateVerified:
      input:
@@ -211,5 +212,6 @@ rule annotateVerified:
         sed "s/\\s*$/\\tMEI/" {input} > {input}.temp2.bed
         {config[AnnotSVDir]}bin/AnnotSV -annotationsDir {config[AnnotSVDir]}share/AnnotSV/  -SvinputFile {input}.temp2.bed -genomeBuild {config[genomeBuildGR]} -svtBEDcol 4 -outputDir {config[outPath]}results/ -outputFile {wildcards.sample}.annotatedVerified 
         perl {config[knotAnnotSV]}knotAnnotSV.pl --configFile  envs/config_AnnotSV.yaml --annotSVfile {output[0]} --outDir {config[outPath]}results --genomeBuild hg19  
-        """
+        rm {input}.temp2.bed
+	"""
 
