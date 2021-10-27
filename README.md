@@ -8,7 +8,8 @@ The pipeline runs RetroSeq configured to seach for HERV-K insertions (can look f
 
 Users can choose the level of filtering and verification of predicted insertions, as well as a few steps of downstream analysis: comparing the predictions with the known HERV-K insertions to separate them into previously reported and novel insertions, as well as using AnnotSV to further annotate the insertions with genes and regulatory elements, and their potential clinical significance.
 
-
+# Basic Setup
+open config.yaml file and update all directories: e.g. CRAM or BAM file path; output directory path; RepeatMasker and AnnotSV and KnotAnnot SV path if you are running verification and annotation steps (see below for how to install these)
 
 # Installing Dependencies
 
@@ -18,6 +19,7 @@ If you do not, run the script downloadHG19.sh in order to install it and index i
 ```
 bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
 ```
+update the path to the newly added and indexed human genome in config.yaml
 
 ## RepeatMasker
 https://github.com/rmhubley/RepeatMasker
@@ -49,13 +51,13 @@ As the snakemake pipeline is modular and providing different outputs, one way to
 To produce a file with retroseq prediction which have been filtered and annotated, you would call it:
 
 ```
-snakemake --use-conda --use-envmodules --cores 1 <RESULTS_DIRECTORY>/results/<YOUR_SAMPLE_PREFIX>.annotatedFiltered.tsv
+snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>/results/<YOUR_SAMPLE_PREFIX>.annotatedFiltered.tsv
 ```
 This would run retroseq, filter the results, and run AnnotSV to annotate them. The prerequisites are that either a <YOUR_SAMPLE_PREFIX>.bam or <YOUR_SAMPLE_PREFIX>.cram exist in the respective bam or cram directories specified in file config.yaml.
 
 To run this on the provided sample.bam, set the bam directory in file config.yaml to Examples, and run:
 ```
-snakemake --use-conda --use-envmodules --cores 1 <RESULTS_DIRECTORY>/results/sample.annotatedFiltered.{tsv,html}
+snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>/results/sample.annotatedFiltered.{tsv,html}
 ```
 
 
@@ -63,14 +65,14 @@ snakemake --use-conda --use-envmodules --cores 1 <RESULTS_DIRECTORY>/results/sam
 
 To produce a file with retroseq prediction which have been filtered and verified with the extra verification step (assembling the region and running throught RepeatMasker) and then annotated, you would call it:
 ```
-snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedVerified.tsv
+snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>/results/<YOUR_SAMPLE_PREFIX>.annotatedVerified.tsv
 ```
 
 ## Example 3
 
 To take filtered and verified predictions and to mark known and novel HERV-K insertions, you would call:
 ```
-snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/ {<YOUR_SAMPLE_PREFIX>.novelHitsFV.bed,<YOUR_SAMPLE_PREFIX>.knownHitsFV.bed}
+snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>/results/{<YOUR_SAMPLE_PREFIX>.novelHitsFV.bed,<YOUR_SAMPLE_PREFIX>.knownHitsFV.bed}
 ```
 
 ## Example 4
@@ -82,13 +84,13 @@ To run it on the cluster, you add to the command line:
 
 It can be run with multiple files simultaneously, snakemake will split it in different cores. For example, to get annotated and verified predictions for several files (BAM or CRAM), you would call it:
 ```
-snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/{BAM1_prefix,BAM2_prefix, BAM3_prefix}.annotatedVerified.tsv
+snakemake --use-conda --use-envmodules --cores 3 <MY_OUTPUT_DIRECTORY>/results/{BAM1_prefix,BAM2_prefix, BAM3_prefix}.annotatedVerified.tsv
 ```
 ## Example 6
 
 To call in on the cluster
 ```
-nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p brc --mem-per-cpu=3G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
+nohup snakemake --use-conda --use-envmodules --cores 3 --cluster "sbatch -p brc --mem-per-cpu=3G" /MY_OUTPUT_DIRECTORY/results/{BAM1_prefix.annotatedFiltered.tsv,BAM1_prefix.annotatedFiltered.html,BAM1_prefix.annotatedVerified.tsv,BAM1_prefix.annotatedVerified.html,BAM1_prefix.novelHitsF.bed,BAM1_prefix.novelHitsFV.bed,BAM1_prefix.knownHitsF.bed,BAM1_prefix.knownHitsFV.bed}
 ```
 ## Example 7
 
