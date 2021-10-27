@@ -107,19 +107,23 @@ ALT:
     HEADERTIPS: "Type of insertion, from dbVar"
     COMMENTLIST:
         - ID
-        - AF
+
+AF:
+    POSITION: 9
+    RENAME: "Insertion AF"
+    HEADERTIPS: "Frequency of insertion in general population"
 
 ### Annotations done with regulatory elements
 #############################################
 RE_gene:
-    POSITION: 9
+    POSITION: 10
     RENAME: "Overlapped regulatory elements"
     HEADERTIPS: "Report the name of the genes potentially badly regulated"
 
 ### Annotations done with pathogenic SV
 #######################################
 P_gain_coord:
-    POSITION: 10
+    POSITION: 11
     RENAME: "Pathogenic SV"
     HEADERTIPS: "Known pathogenic genes or genomic regions (with the same SV type; from ClinVar, ClinGen, dbVar, OMIM) completely overlapped with the SV to annotate"
     COMMENTLIST:
@@ -134,7 +138,7 @@ P_gain_coord:
 ### Annotations done with pathogenic snv/indel
 ##############################################
 P_snvindel_nb:
-    POSITION: 11
+    POSITION: 12
     RENAME: "Number of pathogenic SNV/indel overlapped"
     HEADERTIPS: "Pathogenic SNV/indel (from ClinVar) completely overlapped with the SV to annotate"
     COMMENTLIST:
@@ -143,7 +147,7 @@ P_snvindel_nb:
 ### Annotations done with benign SV
 ###################################
 B_gain_source:
-    POSITION: 12
+    POSITION: 13
     RENAME: "Benign SV"
     HEADERTIPS: "Benign genomic regions (with the same SV type; from gnomAD, ClinVar, ClinGen, DGV, DDD, 1000g, IMH) completely overlapping the SV to annotate"
     COMMENTLIST:
@@ -154,7 +158,7 @@ B_gain_source:
 ### Annotations of the breakpoints
 ##################################
 ENCODE_blacklist_characteristics_left:
-    POSITION: 13
+    POSITION: 14
     RENAME: "Left breakpoint annotations"
     HEADERTIPS: "Hover your mouse to highlight the left SV breakpoint (+/- 100bp) annotations"
     COMMENTLIST:
@@ -166,7 +170,7 @@ ENCODE_blacklist_characteristics_left:
         - GC_content_left
 
 ENCODE_blacklist_characteristics_right:
-    POSITION: 14
+    POSITION: 15
     RENAME: "Right breakpoint annotations"
     HEADERTIPS: "Hover your mouse to highlight the right SV breakpoint (+/- 100bp) annotations"
     COMMENTLIST:
@@ -176,6 +180,7 @@ ENCODE_blacklist_characteristics_right:
         - Repeat_type_right
         - Gap_right
         - GC_content_right
+
 
 TAD_coordinate:
     POSITION: 0
