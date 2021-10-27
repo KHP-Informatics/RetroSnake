@@ -9,6 +9,39 @@ The pipeline runs RetroSeq configured to seach for HERV-K insertions (can look f
 Users can choose the level of filtering and verification of predicted insertions, as well as a few steps of downstream analysis: comparing the predictions with the known HERV-K insertions to separate them into previously reported and novel insertions, as well as using AnnotSV to further annotate the insertions with genes and regulatory elements, and their potential clinical significance.
 
 
+
+# Installing Dependencies
+
+## Reference genome
+If you already have a reference genome (and it is indexed), update the path to it in config.yaml
+If you do not, run the script downloadHG19.sh in order to install it and index it.
+```
+bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
+```
+
+## RepeatMasker
+https://github.com/rmhubley/RepeatMasker
+RepeatMasker is only needed for the verification step.  Without it you can still run RetroSeq, Filter insertions, mark known and novel insertions and run functional annotation. If you do not want the extra verification step, you do not need to install RepeatMasker.
+
+Important:
+After the installation of RepeatMasker, update the installation path in the config.yaml file.
+
+## AnnotSV 
+Follow the instructions to download and install AnnotSV and knotAnnotSV.  This is only needed if you are going to run the annotation step of RetroPlus pipeline.  
+
+https://lbgi.fr/AnnotSV/
+
+https://github.com/mobidic/knotAnnotSV
+
+Important:
+After the installation, update the path of the two install directories (to AnnotSV and knotAnnotSV) in the config.yaml file.
+
+Unzip the file resources/insME_WithAF.bed.zip and place it in directory:
+<ANNOT_SV>/share/AnnotSV/Annotations_Human/Users/GRCh37/SVincludedInFt
+
+
+# Running the pipeline
+
 As the snakemake pipeline is modular and providing different outputs, one way to call it is to specify the output file.
 
 ## Example 1
@@ -85,34 +118,6 @@ or on the cluster:
 ```
 nohup snakemake --use-conda --use-envmodules --cores 5 --cluster "sbatch -p MY_PARTITION --mem-per-cpu=3G" 
 ```
-# Installing Dependencies
-
-## Reference genome
-If you already have a reference genome (and it is indexed), update the path to it in config.yaml
-If you do not, run the script downloadHG19.sh in order to install it and index it.
-```
-bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
-```
-
-## RepeatMasker
-https://github.com/rmhubley/RepeatMasker
-RepeatMasker is only needed for the verification step.  Without it you can still run RetroSeq, Filter insertions, mark known and novel insertions and run functional annotation. If you do not want the extra verification step, you do not need to install RepeatMasker.
-
-Important:
-After the installation of RepeatMasker, update the installation path in the config.yaml file.
-
-## AnnotSV 
-Follow the instructions to download and install AnnotSV and knotAnnotSV.  This is only needed if you are going to run the annotation step of RetroPlus pipeline.  
-
-https://lbgi.fr/AnnotSV/
-
-https://github.com/mobidic/knotAnnotSV
-
-Important:
-After the installation, update the path of the two install directories (to AnnotSV and knotAnnotSV) in the config.yaml file.
-
-Unzip the file resources/insME_WithAF.bed.zip and place it in directory:
-<ANNOT_SV>/share/AnnotSV/Annotations_Human/Users/GRCh37/SVincludedInFt
 
 # Modifying the pipeline
 ## Change the transposable element to look for - the default is HERV-K
