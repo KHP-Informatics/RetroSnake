@@ -119,7 +119,7 @@ rule markKnownFiltered:
     benchmark:
        "benchmarks/{sample}.markKnownFiltered.benchmark.txt"
     shell:
-       "bedtools window -w 100 -c -a {config[knownNR]} -b  {input}  > {output}"
+       "bedtools window -w 500 -c -a {config[knownNR]} -b  {input}  > {output}"
 
 rule markNovelFiltered:
     input:
@@ -134,7 +134,7 @@ rule markNovelFiltered:
         """
 	mkdir -p {config[outPath]}novel 
         bedtools sort -i  {input} >  {config[outPath]}novel/{wildcards.sample}.sorted.bed 
-        bedtools window -w 2000 -v -a {config[outPath]}novel/{wildcards.sample}.sorted.bed -b {config[knownNR]} > {output}  
+        bedtools window -w 500 -v -a {config[outPath]}novel/{wildcards.sample}.sorted.bed -b {config[knownNR]} > {output}  
         rm {config[outPath]}novel/{wildcards.sample}.sorted.bed 
         """
 
@@ -149,7 +149,7 @@ rule markKnownVerified:
        "benchmarks/{sample}.markKnownVerified.benchmark.txt"
     shell:
        """ 
-       bedtools window -w 100 -c -a {config[knownNR]} -b  {input}  > {output}
+       bedtools window -w 500 -c -a {config[knownNR]} -b  {input}  > {output}
        """
 rule markNovelVerified:
     input:
@@ -164,7 +164,7 @@ rule markNovelVerified:
         """
 	mkdir -p {config[outPath]}novel 
         bedtools sort -i  {input} >  {config[outPath]}novel/{wildcards.sample}.sorted.bed 
-        bedtools window -w 2000 -v -a {config[outPath]}novel/{wildcards.sample}.sorted.bed -b {config[knownNR]} > {output}  
+        bedtools window -w 500 -v -a {config[outPath]}novel/{wildcards.sample}.sorted.bed -b {config[knownNR]} > {output}  
         rm {config[outPath]}novel/{wildcards.sample}.sorted.bed 
         """
 
