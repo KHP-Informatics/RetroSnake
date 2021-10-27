@@ -16,9 +16,14 @@ As the snakemake pipeline is modular and providing different outputs, one way to
 To produce a file with retroseq prediction which have been filtered and annotated, you would call it:
 
 ```
-snakemake --use-conda --use-envmodules --cores 5 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedFiltered.tsv
+snakemake --use-conda --use-envmodules --cores 1 <RESULTS_DIRECTORY>/<YOUR_SAMPLE_PREFIX>.annotatedFiltered.tsv
 ```
 This would run retroseq, filter the results, and run AnnotSV to annotate them. The prerequisites are that either a <YOUR_SAMPLE_PREFIX>.bam or <YOUR_SAMPLE_PREFIX>.cram exist in the respective bam or cram directories specified in file config.yaml.
+
+To run this on the provided sample.bam, set the bam directory in file config.yaml to Examples, and run:
+```
+snakemake --use-conda --use-envmodules --cores 1 <RESULTS_DIRECTORY>/sample.annotatedFiltered.{tsv,html}
+```
 
 
 ## Example 2
