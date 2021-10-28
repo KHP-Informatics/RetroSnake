@@ -11,7 +11,6 @@ Users can choose the level of filtering and verification of predicted insertions
 # Basic Setup
 open config.yaml file and update all directories: e.g. CRAM or BAM file path; output directory path; RepeatMasker and AnnotSV and KnotAnnot SV path if you are running verification and annotation steps (see below for how to install these)
 
-# Installing Dependencies
 
 ## Reference genome
 If you already have a reference genome (and it is indexed), update the path to it in config.yaml
@@ -20,6 +19,15 @@ If you do not, run the script downloadHG19.sh in order to install it and index i
 bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
 ```
 update the path to the newly added and indexed human genome in config.yaml
+
+## Running the pipeline without any dependencies (no verification or annotation)
+Once the paths in config.yaml point to CRAM/BAM path, path to the reference genome and the output path - you can run the pipeline on the provided sample.bam in order to predict insertions, filter them and split them in known and novel.
+
+```
+snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>{/filter/sample.bed,results/sample.knownHitsF.bed,results/sample.novelHitsF.bed}
+```
+
+# Installing Dependencies
 
 ## RepeatMasker
 https://github.com/rmhubley/RepeatMasker
