@@ -9,6 +9,10 @@ The pipeline runs RetroSeq configured to seach for HERV-K insertions (can look f
 Users can choose the level of filtering and verification of predicted insertions, as well as a few steps of downstream analysis: comparing the predictions with the known HERV-K insertions to separate them into previously reported and novel insertions, as well as using AnnotSV to further annotate the insertions with genes and regulatory elements, and their potential clinical significance.
 
 # Basic Setup
+
+RetroSnake requires installation of snakemake pipeline management system, which is easily done by following the instructions here:
+https://snakemake.readthedocs.io/en/stable/getting_started/installation.html
+
 open config.yaml file and update all directories: e.g. CRAM or BAM file path; output directory path; RepeatMasker and AnnotSV and KnotAnnot SV path if you are running verification and annotation steps (see below for how to install these)
 
 
