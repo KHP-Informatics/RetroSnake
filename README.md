@@ -21,7 +21,9 @@ bash downloadHG19.sh PATH_TO_DIR_TO_PLACE_REFERENCE_GENOME
 update the path to the newly added and indexed human genome in config.yaml
 
 ## Running the pipeline without any dependencies (no verification or annotation)
-Once the paths in config.yaml point to CRAM/BAM path, path to the reference genome and the output path - you can run the pipeline on the provided sample.bam in order to predict insertions, filter them and split them in known and novel.
+
+
+Once the paths in config.yaml point to CRAM/BAM path, path to the reference genome and the output path - you can run the pipeline on the provided sample.bam in order to predict insertions, filter them and split them in known and novel.  You only need to have conda installed.
 
 ```
 snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>{/filter/sample.bed,results/sample.knownHitsF.bed,results/sample.novelHitsF.bed}
