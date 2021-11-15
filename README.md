@@ -8,12 +8,14 @@ The pipeline runs RetroSeq configured to seach for HERV-K insertions (can look f
 
 Users can choose the level of filtering and verification of predicted insertions, as well as a few steps of downstream analysis: comparing the predictions with the known HERV-K insertions to separate them into previously reported and novel insertions, as well as using AnnotSV to further annotate the insertions with genes and regulatory elements, and their potential clinical significance.
 
-# Basic Setup
+# Basic Requirements
 
 RetroSnake requires installation of snakemake pipeline management system, which is easily done by following the instructions here:
 https://snakemake.readthedocs.io/en/stable/getting_started/installation.html
 
-open config.yaml file and update all directories: e.g. CRAM or BAM file path; output directory path; RepeatMasker and AnnotSV and KnotAnnot SV path if you are running verification and annotation steps (see below for how to install these)
+
+# Basic Setup
+Open config.yaml file and update all directories: e.g. CRAM or BAM file path; output directory path; RepeatMasker and AnnotSV and KnotAnnot SV path if you are running verification and annotation steps (see below for how to install these)
 
 
 ## Reference genome
@@ -32,7 +34,10 @@ Once the paths in config.yaml point to CRAM/BAM path, path to the reference geno
 ```
 snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>{/filter/sample.bed,results/sample.knownHitsF.bed,results/sample.novelHitsF.bed}
 ```
-
+This will produce three result files: 
+ <MY_OUTPUT_DIRECTORY>/filter/sample.bed: a bed file with all high quality insertions predicted by RetroSnake
+ <MY_OUTPUT_DIRECTORY>results/sample.knownHitsF.bed: known insertions 
+ <MY_OUTPUT_DIRECTORY>/results/sample.novelHitsF.bed: novel insertions
 # Installing Dependencies
 
 ## RepeatMasker
