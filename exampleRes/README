@@ -1,0 +1,4 @@
+
+These are the expected result files on the sample.bam, with minimal setup: 
+sample.novelHitsF.bed and sample.knownHitsF.bed will be in  'results' folder under your defined output directory. They represent novel and known predicted HERVs, respectively. 
+The sample.bed contains all filtered retroseq predictions, it will be in folder 'filter'.
