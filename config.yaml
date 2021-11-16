@@ -8,7 +8,6 @@ HERVK_eref: resources/hervk_eref.tab
 refHg19: /PATH_TO_WHERE_YOU_DOWNLOADED_REFERENCE_GENOME/hg19.fa
 knownNR: resources/list_of_known_integration_sitesNR.bed
 pythonScripts: pythonScripts
-retroPath: /PATH_OF_RETROSEQ_INSTALLATION/bin
 RepeatMaskerPath: /PATH_OF_REPEATMASKER_INSTALLATION/RepeatMasker/
 AnnotSVDir: /PATH_OF_ANNOTSV/AnnotSV/
 knotAnnotSV: /PATH_OF_KNOT_ANNOT_SV/knotAnnotSV/
