@@ -32,7 +32,7 @@ update the path to the newly added and indexed human genome in config.yaml
 Once the paths in config.yaml point to CRAM/BAM path, path to the reference genome and the output path - you can run the pipeline on the provided sample.bam in order to predict insertions, filter them and split them in known and novel.  You only need to have conda installed.
 
 ```
-snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>{/filter/sample.bed,results/sample.knownHitsF.bed,results/sample.novelHitsF.bed}
+snakemake --use-conda --use-envmodules --cores 1 <MY_OUTPUT_DIRECTORY>/{filter/sample.bed,results/sample.knownHitsF.bed,results/sample.novelHitsF.bed}
 ```
 This will produce three result files: 
  <MY_OUTPUT_DIRECTORY>/filter/sample.bed: a bed file with all high quality insertions predicted by RetroSnake
