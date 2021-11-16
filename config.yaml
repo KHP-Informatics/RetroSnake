@@ -1,7 +1,7 @@
 #config.yaml
 
 #absolute or relative
-bamPath: /PATH_TO_YOUR_OWN_BAM_REPOSITORY/
+bamPath: example/
 cramPath: /PATH_TO_YOUR_OWN_CRAM_REPOSITORY/
 outPath: /DIRECTORY_FOR_RESULTS/
 HERVK_eref: resources/hervk_eref.tab
