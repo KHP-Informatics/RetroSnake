@@ -204,7 +204,7 @@ If a TE (by default LTR5_Hs) is found either in more than one contig, OR if it i
 If the verification level is "Low" (default), if there is a LTR5_Hs anywhere in any contig, it will pass the filter.
  
 ## License
-to be added
+GNU General Public License v3.0
 
 ## Code Contributors:
 Renata Kabiljo
